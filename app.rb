@@ -6,7 +6,7 @@ require 'sinatra/activerecord'
 
 set :database, "sqlite3:barbershop.db"
 
-class  Client < Activerecord::barbershop
+class  Client < ActiveRecord::Base
 end	
 
 get '/' do
