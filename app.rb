@@ -17,5 +17,6 @@ end
 # Barber.create :name => 'Mike Jonson'
 
 get '/' do
+	@barbers = Barber.all
 	erb :index
 end
