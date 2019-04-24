@@ -32,7 +32,6 @@ end
 
 
 get '/visit' do
-
 	erb :visit
 end
 
@@ -52,12 +51,17 @@ end
 
 
 get '/contacts' do
-
 	erb :contacts
 end
 
 
 post '/contacts' do
-	@email	  = params[email]
-	@message  = params[message]
+	@email	  = params[:email]
+	@message  = params[:message]
+
+Contact.create :email =>@email , :message => @message
+
+ 	erb "<h3>Thank you for your message.. see you</h3>"
+
+
 end
