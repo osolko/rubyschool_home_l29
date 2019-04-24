@@ -39,7 +39,9 @@ post '/visit' do
 	@datetime = params[:datetime]
 	@barber   = params[:barber]
 	@color	  = params[:color] 
-	
+
+Client.create :name => @username ,  :phone => @phone , :datestamp => @datetime , :barber => @barber , :color => @color
+
 
  	erb "<h2>Thank you <b>#{@username.capitalize}</b>, we will contact with you!</h2>"
 end
