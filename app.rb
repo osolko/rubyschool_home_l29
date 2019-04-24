@@ -12,6 +12,9 @@ end
 class  Barber < ActiveRecord::Base
 end
 
+class  Contact < ActiveRecord::Base
+end
+
 before do
 	@barbers = Barber.all
 end
@@ -44,4 +47,17 @@ Client.create :name => @username ,  :phone => @phone , :datestamp => @datetime ,
 
 
  	erb "<h2>Thank you <b>#{@username.capitalize}</b>, we will contact with you!</h2>"
+end
+
+
+
+get '/contacts' do
+
+	erb :contacts
+end
+
+
+post '/contacts' do
+	@email	  = params[email]
+	@message  = params[message]
 end
