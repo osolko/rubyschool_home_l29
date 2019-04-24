@@ -12,11 +12,34 @@ end
 class  Barber < ActiveRecord::Base
 end
 
+before do
+	@barbers = Barber.all
+end
 
 # insert new value to table with ActiveRecord
 # Barber.create :name => 'Mike Jonson'
 
 get '/' do
-	@barbers = Barber.all
+	# @barbers = Barber.all
+	# make  with order
+	  @barbers = Barber.order 'created_at DESC'
+
 	erb :index
+end
+
+
+get '/visit' do
+
+	erb :visit
+end
+
+post '/visit' do
+	@username = params[:username]
+	@phone 	  = params[:phone]
+	@datetime = params[:datetime]
+	@barber   = params[:barber]
+	@color	  = params[:color] 
+	
+
+ 	erb "<h2>Thank you <b>#{@username.capitalize}</b>, we will contact with you!</h2>"
 end
