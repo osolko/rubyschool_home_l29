@@ -47,8 +47,8 @@ post '/visit' do
 	if c.save 
  		erb "<h2>Thank you, we will contact with you!</h2>"
  	else
- 		#erb c.error.message
- 		erb "#{c.errors.messages}"
+ 		@error = c.errors.full_messages.first
+ 		erb :visit
  	end
 end
 
