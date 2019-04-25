@@ -7,6 +7,12 @@ require 'sinatra/activerecord'
 set :database, "sqlite3:barbershop.db"
 
 class  Client < ActiveRecord::Base
+#validates inherit method from ActiveRecord
+  validates :name, presence: true
+  validates :phone, presence: true
+  validates :datestamp, presence: true
+  validates :barber, presence: true
+
 end
 
 class  Barber < ActiveRecord::Base
@@ -37,11 +43,13 @@ end
 
 post '/visit' do
 
-	c = Client.new params[:client]
-	c.save
-
-
- 	erb "<h2>Thank you, we will contact with you!</h2>"
+	c = Client.new params[:client]	
+	if c.save 
+ 		erb "<h2>Thank you, we will contact with you!</h2>"
+ 	else
+ 		#erb c.error.message
+ 		erb "#{c.errors.messages}"
+ 	end
 end
 
 
