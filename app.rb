@@ -42,7 +42,19 @@ post '/visit' do
 	@barber   = params[:barber]
 	@color	  = params[:color] 
 
-Client.create :name => @username ,  :phone => @phone , :datestamp => @datetime , :barber => @barber , :color => @color
+# 1-st variant to save
+# Client.create :name => @username ,  :phone => @phone , :datestamp => @datetime , :barber => @barber , :color => @color
+
+# 2-nd variant to save
+
+	c = Client.new
+	c.name 		= @username  
+	c.phone 	= @phone 
+	c.datestamp = @datetime 
+	c.barber 	= @barber  
+	c.color 	= @color
+	c.save
+
 
 
  	erb "<h2>Thank you <b>#{@username.capitalize}</b>, we will contact with you!</h2>"
