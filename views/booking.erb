@@ -1,0 +1,12 @@
+<h2>Visitors</h2>
+
+
+<% @client.each do |cl| %>
+<p> 
+  
+Clients Name: <a href='/visitor/<%= cl.id%>'> <%= cl.name %></a>
+
+</p>
+
+<% end %>
+
