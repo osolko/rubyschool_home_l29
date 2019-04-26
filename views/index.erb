@@ -1,6 +1,6 @@
 <h2> Barbers shop list </h2>
 <% @barbers.each do |b| %>
   <p> 
-  	 <%= b.name %>
+  	 <a href="/barber/<%= b.id %>"> <%= b.name %> </a>
   </p>
 <%end%>

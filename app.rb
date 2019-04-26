@@ -8,7 +8,7 @@ set :database, "sqlite3:barbershop.db"
 
 class  Client < ActiveRecord::Base
 #validates inherit method from ActiveRecord
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum:3, maximum:5 }
   validates :phone, presence: true
   validates :datestamp, presence: true
   validates :barber, presence: true
@@ -24,9 +24,6 @@ end
 before do
 	@barbers = Barber.all
 end
-
-# insert new value to table with ActiveRecord
-# Barber.create :name => 'Mike Jonson'
 
 get '/' do
 	# @barbers = Barber.all
@@ -68,5 +65,9 @@ Contact.create :email =>@email , :message => @message
 
  	erb "<h3>Thank you for your message.. see you</h3>"
 
+end
 
+
+get '/barber/:id' do
+ erb :barber
 end
